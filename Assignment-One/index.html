@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Builder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Team Builder</h1>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h3>This is the Home Page</h3>
+        <p>Register yourself and see your current team below.</p>
+    </main>
+
+    <div class="registration">
+        <div class="title">Registration</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Full Name</span>
+                    <input type="text" placeholder="Enter your name" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Description</span>
+                    <input type="text" placeholder="Enter your description" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Age</span>
+                    <input type="number" placeholder="Enter your age" required min="18" max="100">
+                </div>
+                <div class="input-box">
+                    <span class="details">Image</span>
+                    <input type="url" placeholder="Enter your image URL" required>
+                </div>
+            </div>
+            <div class="register-button">
+                <input type="submit" value="Register">
+            </div>
+            <div class="reset-button">
+                <input type="reset" value="Reset">
+            </div>
+        </form>
+    </div>
+
+    <div class="roster">
+        <div class="title">Roster</div>
+        <div class="roster-details">
+            
+        </div>
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+</html>
