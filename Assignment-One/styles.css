@@ -15,8 +15,9 @@ body{
     background: linear-gradient(135deg, rgb(135, 205, 229), rgb(187, 116, 187));
 }
 
-h1 {
+h1{
     text-align: center;
+    font-size: 3rem;
 }
 
 .navbar{
@@ -58,9 +59,20 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 2px;
     width: 800px;
     max-width: 95%;
     margin: 50px auto;
+}
+
+main .about{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255,255,255,0.37);
+    padding: 25px 35px;
+    border-radius: 10px;
 }
 
 .registration{
@@ -76,7 +88,8 @@ main{
     position: relative;
 }
 
-.registration .title::before{
+.registration .title::before,
+.roster .title::before{
     content: '';
     position: absolute;
     left: 0;
@@ -108,7 +121,7 @@ form .user-details .input-box{
     height: 45px;
     width: 100%;
     outline: none;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 1px solid lightgrey;
     padding-left: 15px;
     font-size: 1rem;
@@ -141,7 +154,7 @@ form .register-button input{
     border: none;
     font-size: 1rem;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 10px;
     letter-spacing: 1px;
     background: linear-gradient(135deg, rgb(135, 205, 229), rgb(187, 116, 187));
 }
