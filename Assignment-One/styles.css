@@ -13,7 +13,7 @@ body{
     gap: 10px;
     min-height: 100vh;
     background: linear-gradient(135deg, rgb(135, 205, 229), rgb(187, 116, 187));
-    margin: 20px;
+    padding: 20px;
 }
 
 h1{
