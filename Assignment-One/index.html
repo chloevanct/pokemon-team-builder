@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Builder</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
 </head>
 <body>
     <h1>Team Builder</h1>
@@ -18,34 +19,42 @@
 
     <main>
         <h3>This is the Home Page</h3>
-        <p>Register yourself and see your current team below.</p>
+        <p>Register a member and see the current team below.</p>
     </main>
 
     <div class="registration">
         <div class="title">Registration</div>
-        <form action="#">
+        <form id = 'registrationForm' action="#" onsubmit="event.preventDefault(); registerMember();">
             <div class="user-details">
                 <div class="input-box">
-                    <span class="details">Full Name</span>
-                    <input type="text" placeholder="Enter member name" required>
+                    <span class="details">Name</span>
+                    <input id="memberName" type="text" placeholder="Enter member name" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Description</span>
-                    <input type="text" placeholder="Enter member description" required>
+                    <input id="memberDescription" type="text" placeholder="Enter member description" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Type</span>
+                    <input id="memberType" type="text" placeholder="Enter member type" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Weakness</span>
+                    <input id="memberWeaknesses" type="text" placeholder="Enter member weaknesses" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Age</span>
-                    <input type="number" placeholder="Enter member age" required min="18" max="100">
+                    <input id="memberAge" type="number" placeholder="Enter member age" required min="1" max="100">
                 </div>
                 <div class="input-box">
                     <span class="details">Image</span>
-                    <input type="url" placeholder="Enter member image URL" required>
+                    <input id="memberImageURL" type="url" placeholder="Enter member image URL" required>
                 </div>
             </div>
-            <div class="register-button">
+            <div class="register-btn">
                 <input type="submit" value="Register">
             </div>
-            <div class="reset-button">
+            <div class="reset-btn">
                 <input type="reset" value="Reset">
             </div>
         </form>
@@ -53,11 +62,8 @@
 
     <div class="roster">
         <div class="title">Roster</div>
-        <div class="roster-details">
-        </div>
+        <ul class="roster-details"></ul>
+        <button class="delete-all-btn" id="deleteAll" onclick="deleteRoster()">Delete All</button>
     </div>
-
-
-    <script src="app.js"></script>
 </body>
 </html>
