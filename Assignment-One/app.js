@@ -51,9 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
     // load new member upon submitting new registration
-    document.getElementById('registrationForm').addEventListener('submit', function(event) {
-        // updating some parts of the page dynamically without a full page reload.
-        event.preventDefault(); 
+    document.getElementById('registrationForm').addEventListener('submit', function() {
+
         const newMember = {
             name: document.getElementById('memberName').value,
             description: document.getElementById('memberDescription').value,
@@ -63,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             memberImageURL: document.getElementById('memberImageURL').value
         };
         addMemberToRoster(newMember);
-        this.reset(); // Clear the form after submission
+        this.reset(); // clear the form after submission
     });
 });
 
