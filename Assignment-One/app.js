@@ -51,7 +51,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
     // load new member upon submitting new registration
-    document.getElementById('registrationForm').addEventListener('submit', function() {
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+         // updating some parts of the page dynamically without a full page reload.
+        event.preventDefault(); 
 
         const newMember = {
             name: document.getElementById('memberName').value,
