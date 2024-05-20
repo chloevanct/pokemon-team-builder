@@ -42,6 +42,12 @@ const initialRoster = JSON.stringify([
     },
 ])
 
+
+// Design inspired by ChatGPT and Google Search on May 13 2024
+// Website found: https://sun.iwu.edu/~mliffito/cs_codex/posts/javascript-domcontentloaded/
+// Prompts used were “Help me get started on adding an event listener in Javascript to the ‘submit’ function of HTML form
+// The generated code was adopted: design style of attaching desired functionality to the ‘DOMContentLoaded’ event listener, and adding reset at the end
+
 // ensure DOM/HTML document fully loaded preventing attachment of event listeners to elements not ready yet
 document.addEventListener('DOMContentLoaded', function() {
 
