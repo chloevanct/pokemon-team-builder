@@ -31,7 +31,8 @@ const MemberForm = () => {
     });
   };
 
-  const handleAdd = () => {
+  const handleAdd = (e) => {
+    e.preventDefault();
     dispatch(addMember(formData));
     setFormData({
       name: '',
@@ -55,16 +56,16 @@ const MemberForm = () => {
   };
 
   return (
-    <div>
-      <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name" />
-      <input type="text" name="type" value={formData.type} onChange={handleChange} placeholder="Type" />
-      <input type="text" name="weaknesses" value={formData.weaknesses} onChange={handleChange} placeholder="Weaknesses" />
-      <input type="text" name="description" value={formData.description} onChange={handleChange} placeholder="Description" />
-      <input type="number" name="age" value={formData.age} onChange={handleChange} placeholder="Age" />
-      <input type="text" name="memberImageURL" value={formData.memberImageURL} onChange={handleChange} placeholder="Image URL" />
-      <button onClick={handleAdd}>Add Member</button>
+    <form className="member-form" onSubmit={handleAdd}>
+      <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name" required/>
+      <input type="text" name="type" value={formData.type} onChange={handleChange} placeholder="Type" required/>
+      <input type="text" name="weaknesses" value={formData.weaknesses} onChange={handleChange} placeholder="Weaknesses" required/>
+      <input type="text" name="description" value={formData.description} onChange={handleChange} placeholder="Description" required/>
+      <input type="number" name="age" value={formData.age} onChange={handleChange} placeholder="Age" required/>
+      <input type="url" name="memberImageURL" value={formData.memberImageURL} onChange={handleChange} placeholder="Image URL" required/>
+      <button type="submit"> Add Member</button>
       <button onClick={handleClear}>Clear</button>
-    </div>
+    </form>
   );
 };
 
