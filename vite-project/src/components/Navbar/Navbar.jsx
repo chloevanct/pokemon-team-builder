@@ -4,6 +4,7 @@
 // The generated code was adopted: CustomLink and pattern to prevent entire large component refresh when navigated to,
 //  learning about BrowserRouter, Routes and Route, and console.log(window.location.pathname), useMatch
 
+import "./Navbar.css";
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
 // Link component creates navlinks in your application
 // when clicked,it renders the corresponding component without reloading the page and changes the URL which triggers React Router to render appropriate componenet.

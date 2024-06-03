@@ -6,10 +6,11 @@
 
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import MemberForm from '../components/MemberForm';
-import MemberList from '../components/MemberList';
-import MemberDetail from '../components/MemberDetail';
-import { setSearchQuery } from '../features/members/membersSlice';
+import MemberForm from '../../components/MemberForm/MemberForm';
+import MemberList from '../../components/MemberList/MemberList';
+import MemberDetail from '../../components/MemberDetail/MemberDetail';
+import { setSearchQuery } from '../../features/members/membersSlice';
+import "./Home.css";
 
 const Home = () => {
   const [selectedMember, setSelectedMember] = useState(null);
@@ -21,17 +22,22 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <>
+    <div className="home">
       <input
         type="text"
         placeholder="Search members by name or type"
         value={searchQuery}
         onChange={handleSearchInputChange}
+        className="search-bar"
       />
+      <div className="member-form-list-group">
       <MemberForm />
       <MemberList setSelectedMember={setSelectedMember} />
       {selectedMember && <MemberDetail member={selectedMember} onClose={() => setSelectedMember(null)} />}
+      </div>
     </div>
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import "./MemberList.css";
 
 const MemberList = ({ setSelectedMember }) => {
   const members = useSelector((state) => state.members.members);
@@ -12,10 +13,10 @@ const MemberList = ({ setSelectedMember }) => {
 
   return (
     <div>
+      <ul className="member-list">
       <h2>Member List</h2>
-      <ul>
         {filteredMembers.map((member, index) => (
-          <li key={index} onClick={() => setSelectedMember(member)}>
+          <li className="member-list-item" key={index} onClick={() => setSelectedMember(member)}>
             <img src={member.memberImageURL} alt={member.name} className="member-list-image"/>
             {member.name}
           </li>

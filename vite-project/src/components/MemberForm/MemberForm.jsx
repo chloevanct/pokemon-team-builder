@@ -5,7 +5,8 @@
 
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addMember } from '../features/members/membersSlice';
+import { addMember } from '../../features/members/membersSlice';
+import './MemberForm.css';
 
 const MemberForm = () => {
   const [formData, setFormData] = useState({
@@ -56,16 +57,23 @@ const MemberForm = () => {
   };
 
   return (
+    <>
+    <div class="registration">
+    <h1 id="registration-title">Registration</h1>
     <form className="member-form" onSubmit={handleAdd}>
       <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name" required/>
       <input type="text" name="type" value={formData.type} onChange={handleChange} placeholder="Type" required/>
       <input type="text" name="weaknesses" value={formData.weaknesses} onChange={handleChange} placeholder="Weaknesses" required/>
       <input type="text" name="description" value={formData.description} onChange={handleChange} placeholder="Description" required/>
-      <input type="number" name="age" value={formData.age} onChange={handleChange} placeholder="Age" required/>
+      <input type="number" name="age" value={formData.age} onChange={handleChange} placeholder="Age" min="1" max="100" required/>
       <input type="url" name="memberImageURL" value={formData.memberImageURL} onChange={handleChange} placeholder="Image URL" required/>
-      <button type="submit"> Add Member</button>
-      <button onClick={handleClear}>Clear</button>
+      <div className="member-form-buttons">
+      <button type="submit" className="form-button submit-button"> Add Member</button>
+      <button onClick={handleClear} className="form-button clear-button">Clear</button>
+      </div>
     </form>
+    </div>
+    </>
   );
 };
 

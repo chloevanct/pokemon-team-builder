@@ -1,0 +1,78 @@
+/* ChatGPT 4.0 June 2 2024
+Prompts used were “Help me get started on styling a form"
+The generated code was adopted: overall code structure as base; added some own styling and adjusted values*/
+
+.member-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin: auto;
+  }
+
+  .member-form input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .member-form input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    outline: none;
+  }
+
+  .member-form-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+
+  .form-button {
+    padding: 10px 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+
+  .form-button:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-button:focus {
+    outline: none;
+  }
+
+  .clear-button {
+    background-color: #ccc;
+    color: #333;
+  }
+
+  .clear-button:hover {
+    background-color: #bbb;
+  }
+
+  .clear-button:focus {
+    box-shadow: 0 0 8px rgba(150, 150, 150, 0.2);
+  }
+
+  .submit-button {
+    background-color: #007bff;
+    color: white;
+  }
+
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+
+  .submit-button:focus {
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+  }

@@ -5,6 +5,7 @@
 // Helps keep DOM structure stable
 
 import React, { useRef } from 'react';
+import './MemberDetail.css';
 
 const MemberDetail = ({ member, onClose }) => {
   const dialogRef = useRef(null);
@@ -21,16 +22,18 @@ const MemberDetail = ({ member, onClose }) => {
 
   return (
     <dialog ref={dialogRef}>
+        <div className="member-detail">
       <h2>{member.name}</h2>
-      <p>{member.type}</p>
-      <o>{member.weaknesses}</o>
+      <p>Type: {member.type}</p>
+      <o>Weaknesses: {member.weaknesses}</o>
       <p>{member.description}</p>
       <p>Age: {member.age}</p>
-      <img src={member.memberImageURL}></img>
+      <img src={member.memberImageURL} className="member-detail-image" alt={member.name} />
       <button onClick={() => {
         dialogRef.current.close();
         onClose();
       }}>Close</button>
+    </div>
     </dialog>
   );
 };
