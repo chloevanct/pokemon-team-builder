@@ -8,8 +8,9 @@
 
 .member-form-list-group {
   display: flex;
-  gap: 40px;
-  padding: 20px;
+  justify-content: center;
+  width: 100%;
+  gap: 5rem;
 }
 
   .search-bar {

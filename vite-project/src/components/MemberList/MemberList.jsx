@@ -1,5 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteMember } from '../../features/members/membersSlice';
 import "./MemberList.css";
 
 const MemberList = ({ setSelectedMember }) => {
@@ -11,14 +12,20 @@ const MemberList = ({ setSelectedMember }) => {
     member.type.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const dispatch = useDispatch();
+  const handleDelete = (name) => {
+    dispatch(deleteMember(name));
+  }
+
   return (
     <div>
       <ul className="member-list">
       <h2>Member List</h2>
         {filteredMembers.map((member, index) => (
-          <li className="member-list-item" key={index} onClick={() => setSelectedMember(member)}>
-            <img src={member.memberImageURL} alt={member.name} className="member-list-image"/>
-            {member.name}
+          <li className="member-list-item" key={index}>
+            <img src={member.memberImageURL} alt={member.name} className="member-list-image" onClick={() => setSelectedMember(member)}/>
+            <span onClick={() => setSelectedMember(member)}>{member.name}</span>
+            <button className="delete-button" onClick={() => handleDelete(member.name)}>Delete</button>
           </li>
         ))}
       </ul>

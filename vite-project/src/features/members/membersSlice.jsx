@@ -29,12 +29,12 @@ const initialState = {
         memberImageURL: "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/196.png"
       },
       {
-        name: "Dragapult",
-        description: "Dragapult can make its whole body transparent by clearing its mind and focusing. Even the Dreepy in Dragapult’s horns become invisible.",
-        type: "Dragon, Ghost",
-        weaknesses: "Ice, Ghost, Dragon, Dark, Fairy",
+        name: "Bulbasaur",
+        description: "For some time after its birth, it uses the nutrients that are packed into the seed on its back in order to grow.",
+        type: "Grass, Poison",
+        weaknesses: "Fire, Ice, Flying, Psychic",
         age: 4,
-        memberImageURL: "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/887.png"
+        memberImageURL: "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png"
       },
       {
         name: "Excadrill",
@@ -57,10 +57,13 @@ const membersSlice = createSlice({
         },
         setSearchQuery: (state, action) => {
           state.searchQuery = action.payload;
-        }
-    }
-})
+        },
+        deleteMember: (state, action) => {
+          state.members = state.members.filter(member => member.name != action.payload);
+        },
+    },
+});
 
-export const { addMember, setSearchQuery } = membersSlice.actions
+export const { addMember, setSearchQuery, deleteMember } = membersSlice.actions;
 
-export default membersSlice.reducer
+export default membersSlice.reducer;

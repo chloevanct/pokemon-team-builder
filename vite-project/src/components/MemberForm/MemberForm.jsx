@@ -59,7 +59,7 @@ const MemberForm = () => {
   return (
     <>
     <div class="registration">
-    <h1 id="registration-title">Registration</h1>
+    <h1>Registration</h1>
     <form className="member-form" onSubmit={handleAdd}>
       <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name" required/>
       <input type="text" name="type" value={formData.type} onChange={handleChange} placeholder="Type" required/>
