@@ -6,7 +6,9 @@ var express = require('express');
 var router = express.Router();
 const path = require('path');
 const { readData, writeData } = require('../utils/utils');
+const { v4: uuidv4 } = require('uuid');
 
+// path to data/resource the following routes manage (in data folder)
 const dataPath = path.join(__dirname, '../data/members.json');
 
 // sets up a route to handle GET requests to the '/members' endpoint
@@ -27,7 +29,7 @@ router.post('/', (req, res) => {
         if (err) {
             return res.status(500).send('Internal Error: Error reading data');
         }
-        const newMember = { id: Date.now(), ...req.body };
+        const newMember = { id: uuidv4(), ...req.body };
         data.push(newMember);
         writeData(dataPath, data, (err) => {
             if (err) {
@@ -45,16 +47,16 @@ router.delete('/:id', (req, res) => {
             return res.status(500).send('Internal Error: Error reading data');
         }
 
-        const memberId = parseInt(req.params.id, 10);
+        const memberId = req.params.id;
         const updatedData = data.filter(member => member.id !== memberId);
         writeData(dataPath, updatedData, (err) => {
             if (err) {
                 return res.status(500).send('Internal Error: Error writing data');
             }
             return res.status(204).send();
-        })
-    })
-})
+        });
+    });
+});
 
 // PUT (edit) member
 router.put('/:id', (req, res) => {
@@ -62,7 +64,7 @@ router.put('/:id', (req, res) => {
         if (err) {
             return res.status(500).send('Error reading data');
         }
-        const memberId = parseInt(req.params.id, 10);
+        const memberId = req.params.id;
         const memberIndex = data.findIndex(member => member.id === memberId);
         if (memberIndex === -1) {
             return res.status(404).send('Member not found');
