@@ -16,16 +16,4 @@ const readData = (dataPath, callback) => {
     });
 };
 
-// Helper to write data
-const writeData = (dataPath, data, callback) => {
-    fs.writeFile(dataPath, JSON.stringify(data, null, 2), 'utf8', (err) => {
-        callback(err);
-    });
-};
-
-module.exports = {
-    readData,
-    writeData
-};
-
-module.exports = { readData, writeData };
+module.exports = { readData };
