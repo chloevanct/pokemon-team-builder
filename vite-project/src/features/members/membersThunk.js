@@ -6,25 +6,25 @@ export const getMembers = createAsyncThunk(
     async () => {
         return await getMembersApi();
     }
-)
+);
 
 export const addMember = createAsyncThunk(
     'members/addMembers',
     async(member) => {
         return await addMembersApi(member);
     }
-)
+);
 
 export const updateMember = createAsyncThunk(
     'members/updateMembers',
     async({id, member}) => {
-        return await updateMembersApi(id. member);
+        return await updateMembersApi(id, member);
     }
-)
+);
 
 export const deleteMember = createAsyncThunk(
     'members/deleteMember',
     async(id) => {
         return await deleteMembersApi(id);
     }
-)
+);

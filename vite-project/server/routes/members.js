@@ -61,7 +61,7 @@ router.put('/:id', (req, res) => {
         return res.status(404).send('Member not found');
     }
     const updatedMember = { ...members[memberIndex], ...req.body };
-    members[membersIndex] = updatedMember;
+    members[memberIndex] = updatedMember;
     return res.status(200).send(updatedMember);
 });
 
