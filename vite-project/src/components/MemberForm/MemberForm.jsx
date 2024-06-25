@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addMember } from '../../features/members/membersSlice';
+import { addMember as addMemberAsync } from '../../features/members/membersThunk';
 import './MemberForm.css';
 
 const MemberForm = () => {
@@ -34,7 +34,7 @@ const MemberForm = () => {
 
   const handleAdd = (e) => {
     e.preventDefault();
-    dispatch(addMember(formData));
+    dispatch(addMemberAsync(formData));
     setFormData({
       name: '',
       type: '',
@@ -58,7 +58,7 @@ const MemberForm = () => {
 
   return (
     <>
-    <div class="registration">
+    <div className="registration">
     <h1>Registration</h1>
     <form className="member-form" onSubmit={handleAdd}>
       <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name" required/>
