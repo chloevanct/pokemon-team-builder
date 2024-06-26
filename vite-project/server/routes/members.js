@@ -4,65 +4,64 @@ The generated code was adopted with some renaming and adapted for initializeMemb
 
 var express = require('express');
 var router = express.Router();
-const path = require('path');
-const { readData } = require('../utils/utils');
 const { v4: uuidv4 } = require('uuid');
+const Member = require('../db/model/member');
 
-// path to data/resource the following routes manage (in data folder)
-const dataPath = path.join(__dirname, '../data/members.json');
-
-let members = null;
-
-const initializeMembers = () => {
-    readData(dataPath, (err, data) => {
-        if (err) {
-            console.error('Error reading original members data', err);
-            return;
-        }
-        members = data;
-    });
-};
-
-initializeMembers();
 
 // sets up a route to handle GET requests to the '/members' endpoint
 // the callback function is executed when this endpoint is hit
 // GET list of members
-router.get('/', (req, res) => {
-    if (!members) {
-        return res.status(500).send('Internal Error: Members data not initialized');
+router.get('/', async (req, res) => {
+    try {
+        const members = await Member.find();
+        return res.send(members);
+    } catch (err) {
+        return res.status(500).send('Internal Error: ' + err.message);
     }
-    return res.send(members);
-});
+  });
 
 // POST a new member
-router.post('/', (req, res) => {
-    const newMember = { id: uuidv4(), ...req.body };
-    members.push(newMember);
-    return res.status(201).send(newMember);
-});
+router.post('/', async (req, res) => {
+    const newMember = new Member({ id: uuidv4(), ...req.body });
+    try {
+      await newMember.save();
+      return res.status(201).send(newMember);
+    } catch (err) {
+        return res.status(400).send('Error: ' + err.message);
+    }
+  });
 
 // DELETE a member
-router.delete('/:id', (req, res) => {
-    const memberId = req.params.id;
-    const updatedData = members.filter(member => member.id !== memberId);
-    if (updatedData.length === members.length) {
-        return res.status(404).send('Member not found');
+router.delete('/:id', async (req, res) => {
+    try {
+        const memberId = req.params.id;
+        const result = await Member.deleteOne({ id: memberId });
+        if (result.deletedCount === 0) {
+            return res.status(404).send('Member not found');
+      }
+      return res.status(204).send();
+    } catch (err) {
+        return res.status(500).send('Internal Error: ' + err.message);
     }
-    members = updatedData;
-    return res.status(204).send();
-});
+  });
 
 // PUT (edit) member
-router.put('/:id', (req, res) => {
-    const memberId = req.params.id;
-    const memberIndex = members.findIndex(member => member.id === memberId);
-    if (memberIndex === -1) {
+router.put('/:id', async (req, res) => {
+    try {
+        const memberId = req.params.id;
+        const updatedMember = await Member.findOneAndUpdate(
+        { id: memberId },
+        req.body,
+        { new: true, runValidators: true }
+      );
+      if (!updatedMember) {
         return res.status(404).send('Member not found');
+      }
+      return res.status(200).send(updatedMember);
+    } catch (err) {
+        return res.status(500).send('Error: ' + err.message);
     }
-    const updatedMember = { ...members[memberIndex], ...req.body };
-    members[memberIndex] = updatedMember;
-    return res.status(200).send(updatedMember);
-});
+  });
+
 
 module.exports = router;
