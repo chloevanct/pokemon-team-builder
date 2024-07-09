@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
       await newMember.save();
       return res.status(201).send(newMember);
     } catch (err) {
-        return res.status(400).send('Error: ' + err.message);
+        return res.status(500).send('Error: ' + err.message);
     }
   });
 
