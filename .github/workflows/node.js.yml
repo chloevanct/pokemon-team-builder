@@ -28,8 +28,5 @@ jobs:
         run: |
           cd vite-project/server
           npm run build --if-present
-          npm start
-      - name: Run tests
-        run: |
-          cd vite-project/server
+          npm start &
           npm test
