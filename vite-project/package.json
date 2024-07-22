@@ -4,7 +4,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "install-server": "cd server && npm install",
+    "start-server": "cd server && npm start",
+    "install-client": "npm install",
+    "start-client": "npm run dev"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
