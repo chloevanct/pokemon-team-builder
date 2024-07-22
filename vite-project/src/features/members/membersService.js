@@ -2,7 +2,7 @@
 Prompts used were “How do I use fetch and how to I handle requests with plain text error messages"
 The generated handleResponse, getMembersApi and updateMembersApi code was adopted with some renaming and referenced Stephanie's repo from workshop*/
 
-const API_BASE_URL = RENDER_SERVER_URL
+const API_BASE_URL = process.env.RENDER_SERVER_URL
 
 const handleResponse = async (response) => {
     if (!response.ok) {
