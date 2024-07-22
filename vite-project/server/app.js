@@ -16,7 +16,7 @@ connectDB();
 var app = express();
 
 const corsOptions = {
-    origin: "https://cpsc455-assignment-chloevanct-frontend.onrender.com",
+    origin: process.env.RENDER_FRONTEND_URL,
 }
 
 app.use(logger('dev'));
